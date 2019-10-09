@@ -8,7 +8,6 @@ class MediumInWp
 
     /**
      * Access the access token from the given user.
-     * If no user is set, then It retrieves the token from logged user
      *
      * @param Int $userId
      * @return String
