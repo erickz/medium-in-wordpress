@@ -5,13 +5,7 @@ class MediumInWp
     public function __construct() {
         $this->syncPostsWithMedium();
     }
-
-    /**
-     * Access the access token from the given user.
-     *
-     * @param Int $userId
-     * @return String
-     */
+    
     public function getAccessTokenFromWp($userId = null)
     {
         $token = get_option( MEDIUM_IN_WP_PREFIX . 'access_token_' . $userId);
@@ -29,13 +23,6 @@ class MediumInWp
         return $dataToken['access_token'];
     }
 
-    /**
-     * Store the access token into the `wp_option` table
-     *
-     * @param String $accessToken
-     * @param String $expiresIn
-     * @param Int $userId
-     */
     public function storeAccessTokenToWp($accessToken = '', $expiresIn = null, $userId = null)
     {
         $dataToken = array(
