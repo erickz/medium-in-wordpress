@@ -13,7 +13,7 @@ class MediumInWp
      * @param Int $userId
      * @return String
      */
-    public function getAccessToken($userId = null)
+    public function getAccessTokenFromWp($userId = null)
     {
         $token = get_option( MEDIUM_IN_WP_PREFIX . 'access_token_' . $userId);
 
@@ -37,7 +37,7 @@ class MediumInWp
      * @param String $expiresIn
      * @param Int $userId
      */
-    public function storeAccessToken($accessToken = '', $expiresIn = null, $userId = null)
+    public function storeAccessTokenToWp($accessToken = '', $expiresIn = null, $userId = null)
     {
         $dataToken = array(
             'access_token' => $accessToken,
