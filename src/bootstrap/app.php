@@ -1,8 +1,6 @@
 <?php
-
-
-require_once $pluginDir . 'src/switches/on.php';
-require_once $pluginDir . 'src/switches/off.php';
+// include the Composer autoload file
+require $pluginDir . 'vendor/autoload.php';
 
 use MediumInWp\Switches\On;
 use MediumInWp\Switches\Off;
@@ -21,6 +19,7 @@ class PluginApp
         $this->version = $version;
         $this->fileName = $fileName;
 
+        //Register in WP the events when the plugin is activated and desactivated
         $this->switch_on();
         $this->switch_off();
     }
@@ -35,11 +34,6 @@ class PluginApp
     {
         $off = new Off($this->fileName);
         $off->register_in_wp();
-    }
-
-    public function declare_listeners()
-    {
-
     }
 
     public function execute()
