@@ -17,7 +17,7 @@ class Off
 
     public function register_in_wp()
     {
-        register_deactivation_hook( $this->fileName, array('MediumInWp\Switches\Off', 'deactivate'));
+        register_deactivation_hook( $this->fileName, array('MediumInWp\Switchers\Off', 'deactivate'));
     }
 
     public static function deactivate()
