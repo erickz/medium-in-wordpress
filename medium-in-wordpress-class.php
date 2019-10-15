@@ -5,7 +5,7 @@ class MediumInWp
     public function __construct() {
         $this->syncPostsWithMedium();
     }
-    
+
     public function getAccessTokenFromWp($userId = null)
     {
         $token = get_option( MEDIUM_IN_WP_PREFIX . 'access_token_' . $userId);
