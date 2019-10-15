@@ -59,8 +59,8 @@ register_activation_hook( __FILE__, 'activate_medium_in_wordpress' );
 register_deactivation_hook( __FILE__, 'deactivate_medium_in_wordpress' );
 
 
-require plugin_dir_path( __FILE__ ) . 'includes/class-medium-in-constants.php';
-require plugin_dir_path( __FILE__ ) . 'includes/class-medium-in-wordpress.php';
+require plugin_dir_path( __FILE__ ) . 'constants.php';
+require MEDIUM_IN_WP_PLUGIN_DIR . 'includes/class-medium-in-wordpress.php';
 
 /**
  * Begins execution of the plugin.

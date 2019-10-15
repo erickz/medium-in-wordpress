@@ -6,11 +6,10 @@
  * A class definition that includes attributes and functions used across both the
  * public-facing side of the site and the admin area.
  *
- * @link       http://example.com
  * @since      1.0.0
  *
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
+ * @package    Medium_In_Wordpress
+ * @subpackage Medium_In_Wordpress/includes
  */
 
 /**
@@ -23,9 +22,9 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Plugin_Name
- * @subpackage Plugin_Name/includes
- * @author     Your Name <email@example.com>
+ * @package    Medium_In_Wordpress
+ * @subpackage Medium_In_Wordpress/includes
+ * @author     Erick C de São Miguel
  */
 class Medium_In_Wordpress {
 
@@ -167,5 +166,4 @@ class Medium_In_Wordpress {
 	public function get_version() {
 		return $this->version;
 	}
-
 }
