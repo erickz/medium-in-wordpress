@@ -2,8 +2,8 @@
 // include the Composer autoload file
 require $pluginDir . 'vendor/autoload.php';
 
-use MediumInWp\Switches\On;
-use MediumInWp\Switches\Off;
+use MediumInWp\Switchers\On;
+use MediumInWp\Switchers\Off;
 
 class PluginApp
 {

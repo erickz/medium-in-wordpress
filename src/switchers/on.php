@@ -1,6 +1,6 @@
 <?php
 
-namespace MediumInWp\Switches;
+namespace MediumInWp\Switchers;
 
 /**
  * Fired when plugin is activated
