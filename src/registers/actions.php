@@ -22,6 +22,10 @@ class Actions
 
     public function run()
     {
+        if (! $this->actions){
+            return;
+        }
 
+        $this->runHooks($this->actions);
     }
 }

@@ -22,6 +22,10 @@ class Filters
 
     public function run()
     {
+        if (! $this->filters){
+            return;
+        }
 
+        $this->runHooks($this->filters, 'filter');
     }
 }
