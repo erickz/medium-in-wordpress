@@ -58,10 +58,8 @@ function deactivate_medium_in_wordpress() {
 register_activation_hook( __FILE__, 'activate_medium_in_wordpress' );
 register_deactivation_hook( __FILE__, 'deactivate_medium_in_wordpress' );
 
-/**
- * The core plugin class that is used to define internationalization,
- * admin-specific hooks, and public-facing site hooks.
- */
+
+require plugin_dir_path( __FILE__ ) . 'includes/class-medium-in-constants.php';
 require plugin_dir_path( __FILE__ ) . 'includes/class-medium-in-wordpress.php';
 
 /**
