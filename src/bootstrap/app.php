@@ -78,6 +78,7 @@ class PluginApp
 
     public function execute()
     {
+        var_dump("Teste");exit;
         $this->runModules();
 
         //$this->loadLanguages();

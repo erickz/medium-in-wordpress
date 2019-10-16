@@ -47,3 +47,7 @@ $pluginApp = new PluginApp($yourPluginName, $pluginDir, $pluginVersion, $pluginM
 $pluginApp->execute();
 
 unset($yourPluginName, $pluginDir, $pluginVersion, $pluginFile);
+
+/**
+ * TODO: Try to add dynamic names for the base namespace into the composer file
+ */
