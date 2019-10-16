@@ -17,7 +17,7 @@ class On
 
     public function register_in_wp()
     {
-        register_activation_hook( $this->mainClassFile, array('MediumInWp\Switchers\On', 'activate') );
+        register_activation_hook( $this->mainClassFile, array('MediumInWp\Switches\On', 'activate') );
     }
 
     public static function activate()
