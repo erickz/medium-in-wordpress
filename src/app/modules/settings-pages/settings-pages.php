@@ -2,28 +2,31 @@
 
 namespace MediumInWp\App\Modules;
 
-class SettingsPage
+use MediumInWp\Loaders\Views;
+
+class SettingsPages
 {
-    public function requestTokenPage()
+    /**
+     * SettingsPage constructor.
+     * @param \MediumInWp\Registers\Actions $actions
+     * @param \MediumInWp\Registers\Filters $filters
+     */
+    public function __construct($actions, $filters)
     {
-        add_action('admin_menu', 'set_up_medium_in_wp_menu');
+        $actions->add('admin_menu', array($this, 'addMenu'));
+    }
 
-        function set_up_medium_in_wp_menu(){
-            add_menu_page( 'Medium in Wordpress',
-                'Medium in WP Settings',
-                'manage_options',
-                'medium_in_wordpress',
-                'medium_in_wordpress_menu' );
-        }
+    public function addMenu()
+    {
+        add_menu_page( 'Medium in Wordpress',
+            'Medium in WP Settings',
+            'manage_options',
+            'medium_in_wordpress',
+            array($this, 'settingsPage'));
+    }
 
-        function medium_in_wordpress_menu(){
-
-            ?>
-
-            <h1>Medium in Wordpress Settings</h1>
-
-            <?php
-
-        }
+    public function settingsPage()
+    {
+        return Views::load(plugin_dir_path( __FILE__ ) . 'templates/settings-view.php');
     }
 }

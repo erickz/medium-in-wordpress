@@ -9,11 +9,15 @@ class Modules
     protected $baseDir;
     protected $modules;
     protected $loadedModules;
+    protected $actions;
+    protected $filters;
 
-    public function __construct($baseDir = '', $modules = array())
+    public function __construct($baseDir = '', $modules = array(), $actions = null, $filters = null)
     {
         $this->baseDir = $baseDir;
         $this->modules = $modules;
+        $this->actions = $actions;
+        $this->filters = $filters;
 
         $this->load();
     }
@@ -26,10 +30,11 @@ class Modules
             $file = $moduleName . '.php';
             $fullPath = $this->baseDir . 'src/app/modules/' . $moduleName . '/' . $file;
 
-            if(isset($module['priority'])){
-                $priority = $module['priority'];
+            if(isset($module['isAdmin'])){
+                $isAdmin = $module['isAdmin'];
 
-                if ($priority == 'admin' && ! is_admin()){
+                //If It requires to be in the admin page and the page loaded It's not on It, then It skip
+                if ($isAdmin && ! is_admin()){
                     continue;
                 }
             }

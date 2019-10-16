@@ -17,7 +17,7 @@ class Actions
 
     public function add($hook, $component, $callback, $priority, $accepted_args)
     {
-        $this->addHook($this->actions, $hook, $component, $callback, $priority, $accepted_args);
+        return $this->addHook($this->actions, $hook, $component, $callback, $priority, $accepted_args);
     }
 
     public function run()

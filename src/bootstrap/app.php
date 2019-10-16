@@ -35,12 +35,12 @@ class PluginApp
             $this->register_switch_off();
         }
 
-        //Instantiate the Modules class which loads all modules
-        $this->modules = new Modules($this->dir, $modulesList);
-
         //Instantiate filters and actions
         $this->actions = new Actions();
         $this->filters = new Filters();
+
+        //Instantiate the Modules class which loads all modules
+        $this->modules = new Modules($this->dir, $modulesList, $this->actions, $this->filters);
     }
 
     public function register_switch_on()

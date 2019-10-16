@@ -4,7 +4,7 @@ namespace MediumInWp\Registers;
 
 trait hookTraits
 {
-    public function addHook($hooks = array(), $hook = '', $component = '', $callback = '', $priority = '', $accepted_args = '')
+    public function addHook(&$hooks = array(), $hook = '', $component = '', $callback = '', $priority = 99, $accepted_args = '')
     {
         $hooks[] = array(
             'hook'          => $hook,
@@ -27,8 +27,12 @@ trait hookTraits
             return;
         }
 
+        if (! function_exists('add_' . $type)){
+            return false;
+        }
+
         foreach($hooks as $hook){
-            call_user_func('add_' . $type, $hook['hook'], array( $hook['component'], $hook['callback'] ), $hook['priority'], $hook['accepted_args']);
+            $daora = call_user_func('add_' . $type, $hook['hook'], $hook['component'], $hook['callback'], $hook['priority'], $hook['accepted_args']);
         }
     }
 }

@@ -46,10 +46,4 @@ require $pluginDir . 'src/bootstrap/app.php';
 $pluginApp = new PluginApp($yourPluginName, $pluginDir, $pluginVersion, $pluginMainFile, $modulesToLoad);
 $pluginApp->execute();
 
-unset($yourPluginName, $pluginDir, $pluginVersion, $pluginFile);
-
-/**
- * TODO: Try to add dynamic names for the base namespace into the composer file
- * TODO: Make constants to avoid pass so many parameters
- * TODO: Create a file inspired on the .env file but to define the plugin`s informations
- */
+unset($yourPluginName, $pluginVersion, $modulesToLoad, $pluginDir, $pluginMainFile);
