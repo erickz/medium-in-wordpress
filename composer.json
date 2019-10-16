@@ -9,6 +9,14 @@
   "require": {
     "guzzlehttp/guzzle": "6.*"
   },
+  "autoload": {
+    "psr-4": {
+      "MediumInWp\\Switches\\": "src/switches",
+      "MediumInWp\\Registers\\": "src/registers",
+      "MediumInWp\\App\\Helpers\\Globals\\": "src/app/helpers/globals",
+      "MediumInWp\\Loaders\\": "src/loaders"
+    }
+  },
   "config": {
     "preferred-install": "dist",
     "sort-packages": true
