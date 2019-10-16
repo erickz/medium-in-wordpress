@@ -32,9 +32,9 @@ if ( ! defined( 'WPINC' ) ) {
 $yourPluginName = 'Medium In WP';
 $pluginVersion = '1.0.0';
 $modulesToLoad = [
-    'medium-api',
-    'settings-pages',
-    'sync-posts'
+    ['name' => 'medium-api'],
+    ['name' => 'settings-pages'],
+    ['name' => 'sync-posts']
 ];
 
 

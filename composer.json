@@ -13,7 +13,8 @@
     "psr-4": {
       "MediumInWp\\Switches\\": "src/switches",
       "MediumInWp\\Registers\\": "src/registers",
-      "MediumInWp\\App\\Helpers\\Globals\\": "src/app/helpers/globals"
+      "MediumInWp\\App\\Helpers\\Globals\\": "src/app/helpers/globals",
+      "MediumInWp\\App\\Loaders\\": "src/app/helpers/loaders"
     }
   },
   "config": {

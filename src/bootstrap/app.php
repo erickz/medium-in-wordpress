@@ -5,7 +5,7 @@ require $pluginDir . 'vendor/autoload.php';
 use MediumInWp\Switches\On;
 use MediumInWp\Switches\Off;
 
-use MediumInWp\App\Helpers\Globals\Strings;
+use MediumInWp\Loaders\Modules;
 
 use MediumInWp\Lang\i18n;
 
@@ -20,8 +20,7 @@ class PluginApp
     protected $pluginMainFile;
     protected $actions;
     protected $filters;
-    protected $modulesList;
-    protected $loadedModules;
+    protected $modules;
 
     public function __construct($name = '', $dir = '', $version = '1.0.0', $pluginMainFile = '', $modulesList = array())
     {
@@ -29,13 +28,15 @@ class PluginApp
         $this->dir = $dir;
         $this->version = $version;
         $this->pluginMainFile = $pluginMainFile;
-        $this->modulesList = $modulesList;
 
         if (is_admin()){
             //Register in WP the events when the plugin is activated and desactivated
             $this->register_switch_on();
             $this->register_switch_off();
         }
+
+        //Instantiate the Modules class which loads all modules
+        $this->modules = new Modules($modulesList);
 
         //Instantiate filters and actions
         $this->actions = new Actions();
@@ -54,32 +55,9 @@ class PluginApp
         $off->register_in_wp();
     }
 
-    public function loadLanguages()
+    public function runModules()
     {
-        $lang = new i18n();
-        $lang->load($this->name, $this->dir);
-    }
-
-    public function loadModules()
-    {
-        foreach ($this->modulesList as $module)
-        {
-            $file = $module . '.php';
-            $fullPath = $this->dir . 'src/app/modules/' . $module . '/' . $file;
-
-            if ( file_exists( $fullPath ) ) {
-                require_once $fullPath;
-
-                $this->loadedModules[] = $module;
-            }
-        }
-    }
-
-    public function instantiateModules()
-    {
-        foreach($this->loadedModules as $module){
-            $className = Strings::fromSnakeToCamel($module);
-        }
+        $this->modules->run();
     }
 
     public function runActions()
@@ -92,11 +70,15 @@ class PluginApp
         $this->filters->run();
     }
 
+    public function loadLanguages()
+    {
+        $lang = new i18n();
+        $lang->load($this->name, $this->dir);
+    }
+
     public function execute()
     {
-        $this->loadModules();
-
-        $this->instantiateModules();
+        $this->runModules();
 
         //$this->loadLanguages();
 
