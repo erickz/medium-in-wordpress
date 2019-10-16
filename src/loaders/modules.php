@@ -6,11 +6,13 @@ use MediumInWp\App\Helpers\Globals\Strings;
 
 class Modules
 {
+    protected $baseDir;
     protected $modules;
     protected $loadedModules;
 
-    public function __construct($modules = array())
+    public function __construct($baseDir = '', $modules = array())
     {
+        $this->baseDir = $baseDir;
         $this->modules = $modules;
 
         $this->load();
@@ -22,7 +24,7 @@ class Modules
         {
             $moduleName = $module['name'];
             $file = $moduleName . '.php';
-            $fullPath = $this->dir . 'src/app/modules/' . $moduleName . '/' . $file;
+            $fullPath = $this->baseDir . 'src/app/modules/' . $moduleName . '/' . $file;
 
             if(isset($module['priority'])){
                 $priority = $module['priority'];
@@ -45,10 +47,14 @@ class Modules
         $instantiateds = [];
 
         foreach($this->loadedModules as $module){
+            $baseNamespace = '\MediumInWp\App\Modules\\';
             $className = Strings::fromSnakeToCamel($module);
+            $class = $baseNamespace . $className;
 
-            if (class_exists($className)){
-                $instantiateds[] =  new $className($this->actions, $this->filters);
+            if (class_exists($class)){
+                new $class($this->actions, $this->filters);
+
+                $instantiateds[] = $className;
             }
         }
 

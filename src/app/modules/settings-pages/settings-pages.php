@@ -1,6 +1,6 @@
 <?php
 
-namespace MediumInWp\Modules;
+namespace MediumInWp\App\Modules;
 
 class SettingsPage
 {

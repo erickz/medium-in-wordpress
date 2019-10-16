@@ -36,7 +36,7 @@ class PluginApp
         }
 
         //Instantiate the Modules class which loads all modules
-        $this->modules = new Modules($modulesList);
+        $this->modules = new Modules($this->dir, $modulesList);
 
         //Instantiate filters and actions
         $this->actions = new Actions();
@@ -78,7 +78,6 @@ class PluginApp
 
     public function execute()
     {
-        var_dump("Teste");exit;
         $this->runModules();
 
         //$this->loadLanguages();

@@ -1,11 +1,16 @@
 <?php
 
-namespace MediumInWp\Modules;
+namespace MediumInWp\App\Modules;
 
 class MediumApi
 {
+    public function __construct()
+    {
+        
+    }
+
     public function oauth()
     {
-        var_dump("Teste");
+
     }
 }
