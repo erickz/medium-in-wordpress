@@ -5,6 +5,8 @@ require $pluginDir . 'vendor/autoload.php';
 use MediumInWp\Switches\On;
 use MediumInWp\Switches\Off;
 
+use MediumInWp\App\Helpers\Globals\Strings;
+
 use MediumInWp\Lang\i18n;
 
 use MediumInWp\Registers\Actions;
@@ -63,9 +65,9 @@ class PluginApp
         foreach ($this->modulesList as $module)
         {
             $file = $module . '.php';
-            $fullPath = $this->dir . $module . '/' . $file;
+            $fullPath = $this->dir . 'src/app/modules/' . $module . '/' . $file;
 
-            if ( file_exists( $fullPath) ) {
+            if ( file_exists( $fullPath ) ) {
                 require_once $fullPath;
 
                 $this->loadedModules[] = $module;
@@ -75,7 +77,9 @@ class PluginApp
 
     public function instantiateModules()
     {
-
+        foreach($this->loadedModules as $module){
+            $className = Strings::fromSnakeToCamel($module);
+        }
     }
 
     public function runActions()
@@ -90,11 +94,11 @@ class PluginApp
 
     public function execute()
     {
-        //$this->loadLanguages();
-
         $this->loadModules();
 
-//        $this->instantiateModules();
+        $this->instantiateModules();
+
+        //$this->loadLanguages();
 
         $this->runActions();
         $this->runFilters();

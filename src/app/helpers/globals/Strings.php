@@ -4,8 +4,12 @@ namespace MediumInWp\App\Helpers\Globals;
 
 class Strings
 {
-    public static function fromSnakeToCamel($string)
+    public static function fromSnakeToCamel($string = null)
     {
-        return strtolower(preg_replace('/(?<!^)[A-Z]/', '_$0', $string));
+        if (! $string){
+            return false;
+        }
+
+        return ucfirst(str_replace('-', '', lcfirst(ucwords($string, '-'))));
     }
 }
