@@ -7,12 +7,12 @@ class i18n
     /**
      * Load the plugin text domain for translation.
      */
-    public function load() {
+    public function load($pluginName = '', $dir = '') {
 
         load_plugin_textdomain(
-            'plugin-name',
+            $pluginName,
             false,
-            MEDIUM_IN_WP_PLUGIN_DIR . 'src/app/languages'
+            $dir . 'src/app/languages'
         );
 
     }

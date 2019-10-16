@@ -32,11 +32,11 @@ if ( ! defined( 'WPINC' ) ) {
 $yourPluginName = 'Medium In WP';
 $pluginDir = plugin_dir_path( __FILE__ );
 $pluginVersion = '1.0.0';
-$pluginFile = __FILE__;
+$pluginMainFile = __FILE__;
 
 require $pluginDir . 'src/bootstrap/app.php';
 
-$pluginApp = new PluginApp($yourPluginName, $pluginDir, $pluginVersion, $pluginFile);
+$pluginApp = new PluginApp($yourPluginName, $pluginDir, $pluginVersion, $pluginMainFile);
 $pluginApp->execute();
 
 unset($yourPluginName, $pluginDir, $pluginVersion, $pluginFile);
